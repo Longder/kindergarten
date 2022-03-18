@@ -1,0 +1,237 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 2487016 */
+    src: url('//at.alicdn.com/t/font_2487016_xmt4k46ph6r.eot');
+    src: url('//at.alicdn.com/t/font_2487016_xmt4k46ph6r.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2487016_xmt4k46ph6r.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2487016_xmt4k46ph6r.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2487016_xmt4k46ph6r.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2487016_xmt4k46ph6r.svg#iconfont') format('svg');
+}
+
+.test {
+    font-family: iconfont;
+    font-size: 14px;
+}
+
+html,body{
+    height:100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#app{
+    height: 100%;
+    position: relative;
+}
+
+._body {
+    position: relative;
+}
+
+._body_head {
+    min-height: 800px;
+}
+
+._head_top {
+    width: 100%;
+    height: 40px;
+    background: #E3E4E5;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    color: #999999;
+    border-bottom: 1px solid #DDDDDD;
+    letter-spacing: 1px;
+}
+
+._head_top_left {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._head_top_right {
+    height: 100%;
+    margin-right: 10%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+._head_top_right ul {
+    list-style-type: none;
+    margin: 0 10%;
+}
+
+._head_top_right ul li {
+    float: left;
+    padding: 0 10px;
+    border-right: 1px solid #999999;
+}
+
+._head_top_right ul li:last-child {
+    border: none;
+}
+
+._login {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    position: relative;
+}
+
+._login_name {
+    font-size: 16px;
+    color: #1E9FFF;
+}
+
+._login_menu {
+    width: 100%;
+    position: absolute;
+    background: #FFF;
+    top: 30px;
+    left: 0;
+    text-align: center;
+    padding: 10px 0;
+    display: none;
+    z-index: 10;
+}
+
+._login_menu a {
+    color: red;
+}
+
+._login:hover {
+    background: #FFF;
+    color: #000;
+}
+
+._login:hover div {
+    display: block;
+}
+
+/*._head_picture {*/
+/*    width: 100%;*/
+/*    height: 150px;*/
+/*    background-image: url("/static/img/shu3.png");*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+/*._head_title_box{*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    position: relative;*/
+/*    color: #ECECEC;*/
+/*}*/
+._head_title{
+    margin-left: 400px;
+    font-size: 50px;
+}
+
+._head_min_title{
+    position: relative;
+    top: 30px;
+    margin-left: 70px;
+    font-size: 25px;
+}
+
+._head_picture span {
+    margin-left: 100px;
+    font-size: 40px;
+    color: #f0f0f0;
+    z-index: 30;
+}
+
+._head_menu {
+    width: 90%;
+    margin: 0 auto;
+    height: 40px;
+    background-image: linear-gradient(to bottom right, #0A89D1, #AFE0F7);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 18px;
+    color: #FFF;
+    border-bottom: 1px solid #DDDDDD;
+    letter-spacing: 1px;
+}
+
+._head_menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+._head_menu ul li {
+    float: left;
+    height: 100%;
+    padding: 0 20px;
+    border-right: 1px solid #FFF;
+}
+
+._head_menu ul li:first-child {
+    margin-left: 20px;
+}
+
+._head_menu ul li:last-child {
+    border: none;
+}
+
+
+._body_bottom {
+    width: 100%;
+    margin-top: 50px;
+    background: #E8E8E8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 ;
+}
+
+._body_bottom_box {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: #999AAA;
+    font-size: 14px;
+}
+
+._body_bottom_box p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.app-container {
+    padding: 20px;
+}
+
+.components-container {
+    margin: 30px 50px;
+    position: relative;
+}
+
+.pagination-container {
+    margin-top: 30px;
+}
+
+.text-center {
+    text-align: center
+}
+
+.filter-container {
+    padding-bottom: 10px;
+}
+.filter-container .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}

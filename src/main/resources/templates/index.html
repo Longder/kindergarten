@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>春田花花幼稚园</title>
+
+    <!-- element plus stylesheet -->
+    <link rel="stylesheet" th:href="@{/static/element-plus/index.css}"/>
+    <!--custom style-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/styles/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/styles/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/styles/icon-main.css}">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body style="background: #EEEEEE">
+<div id="app">
+    <div class="_body_head">
+        <div class="top-banner">
+            <div class="logo-name">
+                <h1>春田花花幼稚园</h1>
+                <h5>梦开始的地方</h5>
+            </div>
+        </div>
+        <div class="_content">
+            <el-container>
+                <el-header style="padding: 0;">
+                    <div class="nav-box">
+                        <div class="main-container flex-row">
+                            <ul class="nav">
+                                <li>
+                                    <router-link to="/" :class="count===0?'active':''"><a
+                                            @click="changMenu(0)">首页</a></router-link>
+                                </li>
+                                <li>
+                                    <router-link to="/orgManage" :class="count===7?'active':''"><a
+                                            @click="changMenu(7)">菜单A</a></router-link>
+                                </li>
+                                <li>
+                                    <router-link to="/orgManage" :class="count===7?'active':''"><a
+                                            @click="changMenu(7)">菜单B</a></router-link>
+                                </li>
+                                <li>
+                                    <router-link to="/orgManage" :class="count===7?'active':''"><a
+                                            @click="changMenu(7)">菜单C</a></router-link>
+                                </li>
+                            </ul>
+                            <div>
+                                <ul class="nav">
+                                    <li>
+                                        欢迎您：
+                                        <el-dropdown trigger="click" @command="handleCommand">
+                                                <span style="color: #ffffff;cursor: pointer;font-size: 16px;">
+                                                    {{currentUsername}}
+                                                    <i class="el-icon-arrow-down el-icon--right"></i></span>
+                                            <template #dropdown>
+                                                <el-dropdown-menu>
+                                                    <el-dropdown-item icon="el-icon-user" command="basicInfo">信息维护
+                                                    </el-dropdown-item>
+                                                    <el-dropdown-item icon="el-icon-s-operation"
+                                                                      command="certificate">证书管理
+                                                    </el-dropdown-item>
+                                                    <el-dropdown-item icon="el-icon-coin"
+                                                                      command="chain">区块链接入
+                                                    </el-dropdown-item>
+                                                </el-dropdown-menu>
+                                            </template>
+                                        </el-dropdown>
+                                    </li>
+                                    <li><a class="active out" th:href="@{/logout}">退出</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </el-header>
+                <router-view style="margin-top: 20px;"></router-view>
+            </el-container>
+        </div>
+    </div>
+</div>
+<!-- 引入 Vue -->
+<script th:src="@{/static/vue-next/vue.global.js}"></script>
+<!--Vue Router-->
+<script th:src="@{/static/vue-router/vue-router.global.js}"></script>
+<!-- element plus -->
+<script th:src="@{/static/element-plus/index.full.js}"></script>
+<!--local处理-->
+<script th:src="@{/static/element-plus/local/zh-cn.js}"></script>
+<!--vue loader-->
+<script th:src="@{/static/vue3-sfc-loader/vue3-sfc-loader.js}"></script>
+<script th:src="@{/static/vue3-sfc-loader/vue-loader.js}"></script>
+<!--routes-->
+<script th:src="@{/components/router/index.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+    /**
+     * 整体SPA
+     */
+    const App = {
+        data() {
+            return {
+                activeMenu: null,
+                count: 0,
+                currentUsername:'当前用户的名字！'
+            }
+        },
+    };
+    // Vue.component("v-xml-tree", vXmlTree);
+    const app = Vue.createApp(App);
+    app.use(router);
+    // ElementPlus.locale(ElementPlus.lang.zhCn);
+    app.use(ElementPlus, {
+        locale: ElementPlus.lang.zhCn
+    })
+    app.mount("#app");
+</script>
+</body>
+</html>

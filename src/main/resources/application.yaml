@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/kindergarten
+    username: postgres
+    password: xqx1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+# 日志配置（开发用）
+logging:
+  level:
+    com:
+      longder: DEBUG
+# 服务端口
+server:
+  port: 5188
+
+system:
+  default-password: 1234  # 默认密码
