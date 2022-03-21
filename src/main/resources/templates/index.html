@@ -42,16 +42,16 @@
                                             @click="changMenu(0)">首页</a></router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/orgManage" :class="count===7?'active':''"><a
-                                            @click="changMenu(7)">菜单A</a></router-link>
+                                    <router-link to="/activity" :class="count===7?'active':''"><a
+                                            @click="changMenu(1)">活动天地</a></router-link>
                                 </li>
                                 <li>
                                     <router-link to="/orgManage" :class="count===7?'active':''"><a
-                                            @click="changMenu(7)">菜单B</a></router-link>
+                                            @click="changMenu(2)">班级管理</a></router-link>
                                 </li>
                                 <li>
                                     <router-link to="/orgManage" :class="count===7?'active':''"><a
-                                            @click="changMenu(7)">菜单C</a></router-link>
+                                            @click="changMenu(3)">学生信息管理</a></router-link>
                                 </li>
                             </ul>
                             <div>
@@ -65,12 +65,6 @@
                                             <template #dropdown>
                                                 <el-dropdown-menu>
                                                     <el-dropdown-item icon="el-icon-user" command="basicInfo">信息维护
-                                                    </el-dropdown-item>
-                                                    <el-dropdown-item icon="el-icon-s-operation"
-                                                                      command="certificate">证书管理
-                                                    </el-dropdown-item>
-                                                    <el-dropdown-item icon="el-icon-coin"
-                                                                      command="chain">区块链接入
                                                     </el-dropdown-item>
                                                 </el-dropdown-menu>
                                             </template>
@@ -110,9 +104,17 @@
             return {
                 activeMenu: null,
                 count: 0,
-                currentUsername:'当前用户的名字！'
+                currentUsername:'admin'
             }
         },
+        methods:{
+            /**
+             * 切换菜单
+             */
+            changMenu(num) {
+                this.count = num;
+            },
+        }
     };
     // Vue.component("v-xml-tree", vXmlTree);
     const app = Vue.createApp(App);
