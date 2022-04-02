@@ -6,7 +6,9 @@ import org.hibernate.annotations.Proxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Collection;
 import java.util.List;
 
@@ -37,15 +39,20 @@ public class SysUser extends BaseIdEntity implements UserDetails {
     @Column(name = "password_")
     private String password;
 
+//    /**
+//     * 用户角色，每个用户一个角色
+//     */
+//    @OneToMany(fetch = FetchType.EAGER,mappedBy = "sysUser",cascade = CascadeType.ALL)
+//    private List<SysUserRole> roles;
+
     /**
-     * 用户角色
+     * 用户角色，每个用户一个角色
      */
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "sysUser",cascade = CascadeType.ALL)
-    private List<SysUserRole> roles;
+    private SysRole role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return List.of(this.role);
     }
 
     @Override
@@ -78,13 +85,4 @@ public class SysUser extends BaseIdEntity implements UserDetails {
         return true;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("SysUser{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", loginName='").append(loginName).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 }
