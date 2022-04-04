@@ -6,9 +6,7 @@ import org.hibernate.annotations.Proxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -39,16 +37,18 @@ public class SysUser extends BaseIdEntity implements UserDetails {
     @Column(name = "password_")
     private String password;
 
-//    /**
-//     * 用户角色，每个用户一个角色
-//     */
-//    @OneToMany(fetch = FetchType.EAGER,mappedBy = "sysUser",cascade = CascadeType.ALL)
-//    private List<SysUserRole> roles;
-
     /**
      * 用户角色，每个用户一个角色
      */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role_")
     private SysRole role;
+
+    /**
+     * 头像，BASE64值
+     */
+    @Column(name = "avatar_")
+    private String avatar;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

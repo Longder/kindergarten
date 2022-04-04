@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <!--设置mata标签-->
+    <!--强制设置ie浏览器使用edge模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--缩放按照1:1缩放-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Title</title>
+    <link th:href="@{/static/bootstrap-3.3.5-dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/styles/dljm.css}">
+    <link rel="stylesheet" th:href="@{/static/styles/jsxuehua.css}">
+    <style>
+        #loggons{
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            top:20px;
+            left: 20px;
+            z-index: 999;
+        }
+        #loggons>p{
+            padding: 3px;
+        }
+    </style>
 </head>
 <body>
-<h1>我是登录页</h1>
+<div class="container-fluid">
+    <div class="row">
+        <img src="images/loginImages/icon.png" class="dljm_img col-lg-4 col-lg-offset-2">
+        <!--登录表单-->
+        <form th:action="@{/login_check}" method="post">
+            <div id="dljm_div" class="col-md-3 col-lg-offset-1">
+                <p>&#xe611;</p>
+                <p>春田花花幼稚园</p>
+                <div id="dljm_zh">
+                    <label for="dljm_lable"></label>
+                    <input id="dljm_lable" placeholder="请输入你的账号" name="username">
+                </div>
+                <div id="dljm_mm">
+                    <label for="dljm_lable_2"></label>
+                    <input id="dljm_lable_2" type="password" placeholder="请输入你的密码" name="password">
+
+                </div>
+                <div class="logbin">
+                    <!--                <input type="checkbox"><span>下次自动登录</span>
+                                    <p>找回密码?</p>-->
+                </div>
+                <button class="btn btn-default" type="submit" id="dljm_dl">登录</button>
+                <div th:if="${session[SPRING_SECURITY_LAST_EXCEPTION]!=null}">
+                    <span style="color: red;" th:text="${session[SPRING_SECURITY_LAST_EXCEPTION].message}"></span>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
 </body>
+<script th:src="@{/static/bootstrap-3.3.5-dist/js/jquery-1.11.3.js}"></script>
+<script th:src="@{/static/bootstrap-3.3.5-dist/js/bootstrap.js}"></script>
+<script th:src="@{/static/script/jsxuehua.js}"></script>
+<!--<script src="js/jsxuehua.js"></script>-->
+<!--<script src="js/jquery.js"></script>-->
+<!--<script src="js/DATE_index.js"></script>-->
+<script th:src="@{/static/script/three.js}"></script>
 </html>

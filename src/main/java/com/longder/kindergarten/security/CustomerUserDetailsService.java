@@ -31,11 +31,8 @@ public class CustomerUserDetailsService implements UserDetailsService {
         log.debug(s);
         SysUser sysUser = sysUserRepository.getByLoginName(s);
         if(ObjectUtils.isEmpty(sysUser)){
-            throw new BadCredentialsException("用户名不正确");
+            throw new BadCredentialsException("用户名或密码错误");
         }
-//        //设置权限进去
-//        List<SysUserRole> roleList = sysUserRoleRepository.listRolesByUserId(sysUser.getId());
-//        sysUser.setRoles(roleList);
         return sysUser;
     }
 }

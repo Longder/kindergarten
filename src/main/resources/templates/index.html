@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -42,25 +43,25 @@
                                             @click="changMenu(0)">首页</a></router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/activity" :class="count===7?'active':''"><a
+                                    <router-link to="/activity" :class="count===1?'active':''"><a
                                             @click="changMenu(1)">活动天地</a></router-link>
                                 </li>
-                                <li>
-                                    <router-link to="/orgManage" :class="count===7?'active':''"><a
-                                            @click="changMenu(2)">班级管理</a></router-link>
+                                <li v-if="currentUser?.role=='ROLE_ADMIN'">
+                                    <router-link to="/classGradeAndUserManage/userManage" :class="count===2?'active':''"><a
+                                            @click="changMenu(2)">班级和用户管理</a></router-link>
                                 </li>
-                                <li>
-                                    <router-link to="/orgManage" :class="count===7?'active':''"><a
-                                            @click="changMenu(3)">学生信息管理</a></router-link>
+                                <li v-if="currentUser?.role=='ROLE_TEACHER'">
+                                    <router-link to="/userManage" :class="count===3?'active':''"><a
+                                            @click="changMenu(3)">班级</a></router-link>
                                 </li>
                             </ul>
                             <div>
-                                <ul class="nav">
+                                <ul v-if="currentUser" class="nav">
                                     <li>
                                         欢迎您：
                                         <el-dropdown trigger="click" @command="handleCommand">
                                                 <span style="color: #ffffff;cursor: pointer;font-size: 16px;">
-                                                    {{currentUsername}}
+                                                    {{currentUser.name}}
                                                     <i class="el-icon-arrow-down el-icon--right"></i></span>
                                             <template #dropdown>
                                                 <el-dropdown-menu>
@@ -70,7 +71,10 @@
                                             </template>
                                         </el-dropdown>
                                     </li>
-                                    <li><a class="active out" th:href="@{/logout}">退出</a></li>
+                                    <li ><a class="active out" th:href="@{/logout}">退出</a></li>
+                                </ul>
+                                <ul v-if="!currentUser" class="nav">
+                                    <li><a class="active out" th:href="@{/toLogin}">请登录</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -95,6 +99,8 @@
 <script th:src="@{/static/vue3-sfc-loader/vue-loader.js}"></script>
 <!--routes-->
 <script th:src="@{/components/router/index.js}"></script>
+<!--axios-->
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script type="text/javascript" th:inline="javascript">
     /**
      * 整体SPA
@@ -104,7 +110,7 @@
             return {
                 activeMenu: null,
                 count: 0,
-                currentUsername:'admin'
+                currentUser:null,
             }
         },
         methods:{
@@ -114,6 +120,17 @@
             changMenu(num) {
                 this.count = num;
             },
+        },
+        mounted(){
+            console.log("mounted!");
+            // 获取当前登录用户
+            axios.get('/getCurrentUser').then(response => {
+                if (response.data.success) {
+                    this.currentUser = response.data.data;
+                } else {
+                    this.currentUser = null;
+                }
+            });
         }
     };
     // Vue.component("v-xml-tree", vXmlTree);
