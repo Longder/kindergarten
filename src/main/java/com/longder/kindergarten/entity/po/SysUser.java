@@ -1,10 +1,12 @@
 package com.longder.kindergarten.entity.po;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Proxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -47,8 +49,9 @@ public class SysUser extends BaseIdEntity implements UserDetails {
     /**
      * 头像，BASE64值
      */
-    @Column(name = "avatar_")
+    @Column(name = "avatar_",columnDefinition="text")
     private String avatar;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

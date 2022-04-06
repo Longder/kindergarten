@@ -31,23 +31,24 @@
     </el-form>
     <el-table
         border
+        :data="userList"
         size="small"
         style="width: 100%;margin-top: 30px;">
       <el-table-column
           label="编号"
-          prop="applyNo">
+          prop="id">
       </el-table-column>
       <el-table-column
           label="登录名"
-          prop="sharedDataName">
+          prop="loginName">
       </el-table-column>
       <el-table-column
           label="姓名"
-          prop="sharingMode">
+          prop="name">
       </el-table-column>
       <el-table-column
           label="角色"
-          prop="publishOrg">
+          prop="role">
       </el-table-column>
       <el-table-column label="操作" width="100">
         <template #default="scope">
@@ -70,9 +71,32 @@ export default {
     return {
       // 添加用户对话框可见性
       userAddDialogVisible: false,
+      // 用户列表数据
+      userList:[]
     }
   },
+  mounted(){
+    this.listUser();
+  },
   methods:{
+    /**
+     * 查询用户列表
+     */
+    listUser(){
+      axios.get('/admin/userManage/list').then(response => {
+        if (response.data.success) {
+          this.userList = response.data.data;
+        } else{
+          this.$notify.error({
+            title: '查询用户列表失败',
+            message: response.data.msg
+          });
+        }
+      });
+    },
+    /**
+     * 去添加用户
+     */
     toAddUser(){
       this.userAddDialogVisible = true;
     },
@@ -87,6 +111,7 @@ export default {
      */
     confirm() {
       this.userAddDialogVisible = false;
+      this.listUser();
     },
   }
 }
