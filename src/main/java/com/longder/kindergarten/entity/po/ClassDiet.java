@@ -36,6 +36,12 @@ public class ClassDiet extends BaseIdEntity{
     private String content;
 
     /**
+     * 餐饮图片
+     */
+    @Column(name = "image_")
+    private String image;
+
+    /**
      * 关联班级
      */
     @ManyToOne

@@ -1,38 +1,12 @@
 <template>
   <el-card>
-<!--    <el-form :inline="true" size="small">
-      <el-form-item label="共享数据名称">
-        <el-input placeholder="关键字" v-model="queryParam.keyWord"/>
-      </el-form-item>
-      <el-form-item label="数据发布部门">
-        <el-select
-            style="width: 300px;"
-            v-model="queryParam.publishOrgId"
-            filterable
-            remote
-            :loading="selectLoading"
-            :remote-method="loadOrgSelectList"
-            @change="loadMyApply"
-            placeholder="数据发布部门">
-          <el-option
-              v-for="item in orgSelectList"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="loadMyApply">查询</el-button>
-      </el-form-item>
-    </el-form>-->
+    <el-divider><h3>用户管理</h3></el-divider>
     <el-form :inline="true">
       <el-button type="primary" @click="toAddUser">新增用户</el-button>
     </el-form>
     <el-table
         border
         :data="userList"
-        size="small"
         style="width: 100%;margin-top: 30px;">
       <el-table-column
           label="编号"
@@ -50,7 +24,7 @@
           label="角色"
           prop="role">
       </el-table-column>
-      <el-table-column label="操作" width="100">
+      <el-table-column label="操作">
         <template #default="scope">
           <el-button>修改</el-button>
         </template>
