@@ -10,6 +10,7 @@
         style="width: 100%;margin-top: 30px;">
       <el-table-column
           label="编号"
+          width="60"
           prop="id">
       </el-table-column>
       <el-table-column
@@ -26,7 +27,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template #default="scope">
-          <el-button>修改</el-button>
+          <el-button size="small">修改</el-button>
         </template>
       </el-table-column>
     </el-table>

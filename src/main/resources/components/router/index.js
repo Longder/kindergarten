@@ -18,7 +18,7 @@ const ManageForTeacher = loadVue('views/manage-for-teacher/index.vue');
 // 活动管理
 const ActivityManage = loadVue('views/manage-for-teacher/views/ActivityManage/index.vue');
 // 课程管理
-const CourseManage = loadVue('views/manage-for-teacher/views/ActivityManage/index.vue');
+const CourseManage = loadVue('views/manage-for-teacher/views/CourseManage/index.vue');
 // 饮食管理
 const DietManage = loadVue('views/manage-for-teacher/views/DietManage/index.vue');
 

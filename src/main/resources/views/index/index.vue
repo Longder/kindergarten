@@ -29,25 +29,52 @@
             </el-card>
           </el-col>
           <el-col :span="24" style="margin-top: 30px;">
-            <el-card title="公告">
+            <el-card>
+              <template #header>
+                <div class="card-header">
+                  <span>每日所学</span>
+                </div>
+              </template>
               <el-timeline>
-                <el-timeline-item center timestamp="2018/4/12" placement="top">
+                <el-timeline-item center timestamp="2022/4/12" placement="top">
                   <el-card>
-                    <h4>Update Github template</h4>
-                    <p>Tom committed 2018/4/12 20:46</p>
+                    <h4>学习使用饭勺</h4>
+                    <el-space>
+                      <el-image style="width: 100px; height: 100px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="fill" />
+                      <p>啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</p>
+                    </el-space>
+                    <p>赵老师 发布于 2022/4/12 20:46</p>
                   </el-card>
                 </el-timeline-item>
-                <el-timeline-item timestamp="2018/4/3" placement="top">
+                <el-timeline-item timestamp="2022/4/3" placement="top">
                   <el-card>
-                    <h4>Update Github template</h4>
-                    <p>Tom committed 2018/4/3 20:46</p>
+                    <h4>学习使用饭勺</h4>
+                    <el-space>
+                      <el-image style="width: 100px; height: 100px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="fill" />
+                      <p>啦啦啦啦啦啦啦啦啦</p>
+                    </el-space>
+                    <p>赵老师 发布于 2022/4/12 20:46</p>
                   </el-card>
                 </el-timeline-item>
-                <el-timeline-item center timestamp="2018/4/2" placement="top">
-                  Event start
+                <el-timeline-item center timestamp="2022/4/2" placement="top">
+                  <el-card>
+                    <h4>学习使用饭勺</h4>
+                    <el-space>
+                      <el-image style="width: 100px; height: 100px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="fill" />
+                      <p>啦啦啦啦啦啦啦啦啦</p>
+                    </el-space>
+                    <p>赵老师 发布于 2022/4/12 20:46</p>
+                  </el-card>
                 </el-timeline-item>
-                <el-timeline-item timestamp="2018/4/2" placement="top">
-                  Event end
+                <el-timeline-item timestamp="2022/4/2" placement="top">
+                  <el-card>
+                    <h4>学习使用饭勺</h4>
+                    <el-space>
+                      <el-image style="width: 100px; height: 100px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="fill" />
+                      <p>啦啦啦啦啦啦啦啦啦</p>
+                    </el-space>
+                    <p>赵老师 发布于 2022/4/12 20:46</p>
+                  </el-card>
                 </el-timeline-item>
               </el-timeline>
             </el-card>

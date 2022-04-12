@@ -1,6 +1,6 @@
 <template>
   <el-container style="width: 90%;margin: 0 auto;">
-    <el-aside width="200px" style="margin-top: 20px;">
+    <el-aside width="200px" style="margin-top: 40px;">
       <el-menu
           router
           default-active="/classGradeAndUserManage/userManage">

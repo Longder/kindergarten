@@ -51,7 +51,7 @@
                                             @click="changMenu(2)">班级和用户管理</a></router-link>
                                 </li>
                                 <li v-if="currentUser?.role=='ROLE_TEACHER'">
-                                    <router-link to="/teacher" :class="count===3?'active':''"><a
+                                    <router-link to="/teacher/activityManage" :class="count===3?'active':''"><a
                                             @click="changMenu(3)">我的班级</a></router-link>
                                 </li>
                             </ul>

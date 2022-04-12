@@ -4,6 +4,7 @@ import com.longder.kindergarten.entity.po.SysRole;
 import com.longder.kindergarten.entity.po.SysUser;
 import com.longder.kindergarten.repository.SysUserRepository;
 import com.longder.kindergarten.service.UserManageService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,8 @@ public class UserManageServiceImpl implements UserManageService {
 
     @Resource
     private SysUserRepository sysUserRepository;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     /**
      * 查询所有系统用户
@@ -33,6 +36,8 @@ public class UserManageServiceImpl implements UserManageService {
     @Transactional
     @Override
     public void addUser(SysUser sysUser) {
+        // 处理密码
+        sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
         sysUserRepository.save(sysUser);
     }
 
