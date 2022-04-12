@@ -13,6 +13,14 @@ const ClassGradeManage = loadVue('views/class-grade-and-user-manage/views/ClassG
 // 用户管理
 const UserManage = loadVue('views/class-grade-and-user-manage/views/UserManage/index.vue');
 
+// 教师用管理页
+const ManageForTeacher = loadVue('views/manage-for-teacher/index.vue');
+// 活动管理
+const ActivityManage = loadVue('views/manage-for-teacher/views/ActivityManage/index.vue');
+// 课程管理
+const CourseManage = loadVue('views/manage-for-teacher/views/ActivityManage/index.vue');
+// 饮食管理
+const DietManage = loadVue('views/manage-for-teacher/views/DietManage/index.vue');
 
 /**
  * 全局路由定义
@@ -32,6 +40,21 @@ const routes = [
             // 班级管理
             {
                 name: 'classGradeManage', path: 'classGradeManage', component: ClassGradeManage,
+            },
+        ]},
+    // 老师用管理页
+    {path:'/teacher',component: ManageForTeacher,children: [
+            // 活动管理
+            {
+                name:'activityManage',path:'activityManage',component:ActivityManage
+            },
+            // 每日所学管理
+            {
+                name:'courseManage',path:'courseManage',component:CourseManage
+            },
+            // 班级饮食管理
+            {
+                name:'dietManage',path:'dietManage',component:DietManage
             },
         ]}
 ];

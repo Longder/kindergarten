@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 餐饮管理
@@ -24,5 +25,13 @@ public class ClassDietManageServiceImpl implements ClassDietManageService {
     @Transactional
     public void addClassDiet(ClassDiet classDiet) {
         classDietRepository.save(classDiet);
+    }
+
+    /**
+     * 查询某个某个班级下的餐饮情况
+     */
+    @Override
+    public List<ClassDiet> listByClassId(Long classId) {
+        return classDietRepository.listByClassId(classId);
     }
 }

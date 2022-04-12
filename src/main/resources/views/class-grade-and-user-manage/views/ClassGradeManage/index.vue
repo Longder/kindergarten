@@ -14,15 +14,11 @@
       </el-table-column>
       <el-table-column
           label="名称"
-          prop="loginName">
-      </el-table-column>
-      <el-table-column
-          label="学生数量"
           prop="name">
       </el-table-column>
       <el-table-column
           label="任课教师"
-          prop="role">
+          prop="teacher.name">
       </el-table-column>
       <el-table-column label="操作">
         <template #default="scope">
@@ -31,7 +27,7 @@
       </el-table-column>
     </el-table>
   </el-card>
-  <add-class-grade-dialog vis/>
+  <add-class-grade-dialog :visible="classAddDialogVisible" @on-cancel="cancel" @on-confirm="confirm"/>
 </template>
 
 <script>
@@ -43,7 +39,7 @@ export default {
   data() {
     return {
       // 添加班级对话框可见性
-      userAddDialogVisible: false,
+      classAddDialogVisible: false,
       // 班级列表数据
       classGradeList:[]
     }
@@ -54,19 +50,28 @@ export default {
   methods:{
     // 查询班级列表
     listClassGrade(){
-
+      axios.get("/admin/classGradeManage").then(response=>{
+        if(response.data.success){
+          this.classGradeList = response.data.data;
+        }else{
+          this.$notify.error({
+            title: '查询班级列表失败',
+            message: response.data.msg
+          });
+        }
+      })
     },
     /**
      * 取消回调
      */
     cancel() {
-      this.userAddDialogVisible = false;
+      this.classAddDialogVisible = false;
     },
     /**
      * 确认回调
      */
     confirm() {
-      this.userAddDialogVisible = false;
+      this.classAddDialogVisible = false;
       this.listClassGrade();
     },
   }

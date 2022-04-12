@@ -2,6 +2,8 @@ package com.longder.kindergarten.controller;
 
 import com.longder.kindergarten.entity.po.Course;
 import com.longder.kindergarten.service.CourseManageService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +14,7 @@ import java.util.List;
  * 每日所学管理
  */
 @RestController
-@RequestMapping("/admin/courseManage")
+@RequestMapping("/courseManage")
 public class CourseManageController {
 
     @Resource
@@ -35,11 +37,11 @@ public class CourseManageController {
     }
 
     /**
-     * 查询课程列表
+     * 查询某个班级的
      * @return
      */
-    @RequestMapping("/listCourse")
-    public List<Course> listCourse(){
-        return courseManageService.listCourse();
+    @GetMapping("/listCourse/{classId}")
+    public List<Course> listCourse(@PathVariable("classId")Long classId){
+        return courseManageService.listByClassId(classId);
     }
 }

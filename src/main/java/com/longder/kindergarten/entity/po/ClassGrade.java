@@ -26,7 +26,16 @@ public class ClassGrade extends BaseIdEntity{
     @Column(name = "create_date_")
     private LocalDate createDate;
 
+    /**
+     * 负责老师
+     */
     @ManyToOne
     @JoinColumn(name = "teacher_id_",referencedColumnName = "id_")
     private SysUser teacher;
+
+    /**
+     * 不持久化，前端传递id
+     */
+    @Transient
+    private Long teacherId;
 }

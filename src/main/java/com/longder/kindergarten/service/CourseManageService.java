@@ -20,4 +20,9 @@ public interface CourseManageService {
      */
     Course getCourse(Long courseId);
 
+    /**
+     * 查询某班级下的所有课程内容
+     */
+    List<Course> listByClassId(Long classId);
+
 }

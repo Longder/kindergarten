@@ -19,4 +19,9 @@ public interface ClassGradeManageService {
      * 新增班级
      */
     void addClassGrade(ClassGrade classGrade);
+
+    /**
+     * 查询某教师管理的所有班级
+     */
+    List<ClassGrade> listByTeacher(Long teacherId);
 }

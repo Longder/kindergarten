@@ -1,5 +1,6 @@
 package com.longder.kindergarten.service.impl;
 
+import com.longder.kindergarten.entity.po.SysRole;
 import com.longder.kindergarten.entity.po.SysUser;
 import com.longder.kindergarten.repository.SysUserRepository;
 import com.longder.kindergarten.service.UserManageService;
@@ -33,5 +34,15 @@ public class UserManageServiceImpl implements UserManageService {
     @Override
     public void addUser(SysUser sysUser) {
         sysUserRepository.save(sysUser);
+    }
+
+    /**
+     * 根据角色查询用户
+     *
+     * @param role
+     */
+    @Override
+    public List<SysUser> listByRole(SysRole role) {
+        return sysUserRepository.listByRole(role);
     }
 }
